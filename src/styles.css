@@ -1,0 +1,13 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+}
+.selectedItem {
+  text-align: center;
+}
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
