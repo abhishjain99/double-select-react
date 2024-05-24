@@ -4,12 +4,12 @@ import "./countdown.css";
 // custom Hook to use CountdownTimer
 const CountdownTimer = (intialMinutes, initialSeconds) => {
   const [time, setTime] = useState(intialMinutes * 60 + initialSeconds);
-  const [paused, setPaused] = useState(true);
+  const [started, setStarted] = useState(false);
   const intervalRef = useRef();
 
   // componentDidMount, componentDidUpdate, componentShallUnmount - takes cb and what var it depends on
   useEffect(() => {
-    if (!paused) {
+    if (started) {
       intervalRef.current = setInterval(() => {
         setTime((prev) => {
           if (prev > 0) return prev - 1;
@@ -20,24 +20,24 @@ const CountdownTimer = (intialMinutes, initialSeconds) => {
         });
       }, 1000);
     } else clearInterval(intervalRef.current);
-  }, [paused]);
+  }, [started]);
 
   // start will take minutes and seconds & set timer for those many seconds, make it active
   const start = (minutes, seconds) => {
     setTime(minutes * 60 + seconds);
-    setPaused(false);
+    setStarted(true);
   };
 
-  // pauseresume will toggle paused
+  // pauseresume will toggle started
   const pauseresume = () => {
-    setPaused(!paused);
+    setStarted(!started);
   };
 
-  // reset will take minutes and secongs and set timer again with paused true
+  // reset will take minutes and secongs and set timer again with started false
   const reset = (minutes, seconds) => {
     clearInterval(intervalRef.current);
     setTime(minutes * 60 + seconds);
-    setPaused(true);
+    setStarted(false);
   };
 
   // time format of MM:SS
