@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./ticTacToe.css";
 
 const getWinner = (board) => {
@@ -18,6 +18,14 @@ const TicTacToe = () => {
   const [board, setBoard] = useState(new Array(9).fill(null));
   const [x, setX] = useState(true);
   const winner = useMemo(() => getWinner(board), [board]);
+
+  useEffect(() => {
+    winner
+      ? setDisplayMessage(`Player ${winner} wins`)
+      : board.every((cell) => cell !== null)
+      ? setDisplayMessage(`Draw`)
+      : setDisplayMessage(`CurrentPlayer: ${x ? "X" : "O"}`);
+  }, [board, x, winner]);
 
   const handleReset = () => {
     setBoard(new Array(9).fill(null));
@@ -41,7 +49,7 @@ const TicTacToe = () => {
       <div><h1>Tic Tac Toe</h1></div>
       <div className="displayMessage">{displayMessage}</div>
       <div>
-        {board.every((cell) => cell !== null) ? (
+        {winner || board.every((cell) => cell !== null) ? (
           <button className="reset-button" onClick={handleReset}>Reset</button>
         ) : null}
       </div>
