@@ -1,8 +1,9 @@
 // import Selector from "./components/Selector/Selector";
-import Countdown from "./components/CountdownTimer/Countdown";
-import TicTacToe from "./components/TicTacToe/TicTacToe";
-import Todolist from './components/FunctionalComponent_RTK/Todolist';
+// import Countdown from "./components/CountdownTimer/Countdown";
+// import TicTacToe from "./components/TicTacToe/TicTacToe";
+// import Todolist from './components/FunctionalComponent_RTK/Todolist';
 // import Todolist from './components/Todolist/Todolist';
+import Todolist from './components/Typescript_FuncComp_RTK/Todolist';
 import "./styles.css";
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
     <div className="App">
       {/* <Selector /> */}
       {/* <Countdown /> */}
-      <TicTacToe />
+      {/* <TicTacToe /> */}
       <Todolist />
     </div>
   );
