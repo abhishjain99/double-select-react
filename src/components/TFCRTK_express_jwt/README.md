@@ -1,6 +1,6 @@
 ## Installations
 - npm install react-redux @reduxjs/toolkit
-( If you already have typescript installed, npm uninstall ts-node typescript @types/node )
+  - ( If you already have typescript installed, npm uninstall ts-node typescript @types/node )
 - npm install express @types/express 
 - npm install --save-dev nodemon 
 - npm install cors

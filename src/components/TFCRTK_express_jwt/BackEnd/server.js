@@ -35,15 +35,15 @@ app.use((req, res, next) => {
 // write in database
 const writeDB = (data) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(DB_FILE_WRITE_PATH, JSON.stringify(data, null, 2), (err) => { if(err) throw err; })
+    fs.writeFile(DB_FILE_WRITE_PATH, JSON.stringify(data, null, 2), (err) => { if (err) throw err; })
     resolve();
-  })
+  });
 }
 
 // FETCH todos
 app.get('/todos', (req, res) => {
   res.json(db.todos);
-})
+});
 
 // CREATE new todo
 app.post('/todos', async (req, res) => {
@@ -55,12 +55,26 @@ app.post('/todos', async (req, res) => {
   try {
     await writeDB(db);
     res.status(201).json(newTodo);
-  } catch(err) {
+  } catch (err) {
     res.status(500).json({error: "Failed to write to database"});
   }
-})
+});
 
 // UPDATE todos
+app.patch('/todos/:id', async (req, res) => {
+  const existingTodo = db.todos.find((todo) => todo.id === req.params.id);
+  if (existingTodo) {
+    existingTodo.content = req.body.content;
+    try {
+      await writeDB(db);
+      res.json(existingTodo);
+    } catch (err) {
+      res.status(500).json({error: "Failed to update to database"});
+    }
+  } else {
+    res.status(404).send("Todo Not found");
+  }
+});
 
 // DELETE todos
 app.delete('/todos/:id', async (req, res) => {
@@ -68,7 +82,7 @@ app.delete('/todos/:id', async (req, res) => {
   try {
     await writeDB(db);
     res.status(204).send(db);
-  } catch(err) {
-    res.status(500).json({error: "Failed to write to database"});
+  } catch (err) {
+    res.status(500).json({error: "Failed to delete from database"});
   }
-})
+});
