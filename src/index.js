@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 // import store from './components/FunctionalComponent_RTK/todoStore';
-import store from './components/Typescript_FuncComp_RTK/todoStore';
+// import store from './components/Typescript_FuncComp_RTK/todoStore';
+import { store } from './components/TFCRTK_express_jwt/FrontEnd/todoStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
