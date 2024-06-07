@@ -5,6 +5,7 @@
 - npm install --save-dev nodemon 
 - npm install cors
 - npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+- npm install jsonwebtoken
 
 ## CONSTANTS in server.js
 - PORT: We are using `3000`. But if needed, change `PORT` in `server.js` as well as `todoAPIs.tsx`.
