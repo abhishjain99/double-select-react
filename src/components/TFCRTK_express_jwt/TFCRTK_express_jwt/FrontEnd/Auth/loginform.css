@@ -1,0 +1,43 @@
+input[type="text"],
+input[type="password"] {
+  padding: 5px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Login and Signup Button Styles */
+button.LoginButton,
+button.SignupButton {
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  width: 80px;
+}
+
+button.LoginButton {
+  background-color: #0056b3;
+}
+
+button.SignupButton {
+  background-color: #34dbcb;
+}
+
+/* Logout Button Styles */
+button.LogoutButton {
+  background-color: #dc3545;
+  color: white;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button.LogoutButton:hover {
+  background-color: #c82333;
+}
