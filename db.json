@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "user_id": "1717804373758",
+      "username": "A",
+      "password": "A"
+    },
+    {
+      "user_id": "1717805208542",
+      "username": "B",
+      "password": "B"
+    }
+  ],
+  "todos": [
+    {
+      "user_id": "1717804373758",
+      "todos": [
+        {
+          "id": "1717805194244",
+          "content": "D"
+        }
+      ]
+    },
+    {
+      "user_id": "1717805208542",
+      "todos": []
+    }
+  ]
+}
