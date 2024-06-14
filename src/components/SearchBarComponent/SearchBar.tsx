@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { FunctionComponent, ChangeEvent, KeyboardEvent } from "react";
 import fetchDropdownContent from "./debounce";
 import "./searchBar.css";
@@ -13,7 +13,6 @@ const SearchBar: FunctionComponent = () => {
   const [dropdown, setDropdown] = useState<Book[]>([]);
   const [searchIndex, setSearchIndex] = useState<number>(-1);
   const [isDropdownVisible, setIsDropdownVisible] = useState<boolean>(false);
-  const inputRef = useRef<HTMLInputElement>(null);  
 
   // Debounced function to fetch dropdown
   const fetchSearches = useCallback(fetchDropdownContent(setDropdown), []);
@@ -70,7 +69,6 @@ const SearchBar: FunctionComponent = () => {
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
-        ref={inputRef}
         role="bookinput"
         placeholder=" "
       />
