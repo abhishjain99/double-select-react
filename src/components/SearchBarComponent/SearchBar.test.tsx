@@ -17,8 +17,8 @@ describe('SearchBarComponent', () => {
     mockedAxios.get.mockResolvedValue({
       data: {
         items: [
-          { id: '1', volumeInfo: { title: 'Book 1' } },
-          { id: '2', volumeInfo: { title: 'Book 2' } },
+          { id: '1', volumeInfo: { title: 'Harry Potter and the Deathly Hallows' } },
+          { id: '2', volumeInfo: { title: 'Harry Potter and the Prisoner of Azkaban' } },
         ],
       },
     });
@@ -26,11 +26,11 @@ describe('SearchBarComponent', () => {
     render(<SearchBarComponent />);
 
     const input = screen.getByRole('bookinput');
-    fireEvent.change(input, { target: { value: 'Book' } });
+    fireEvent.change(input, { target: { value: 'Harry Potter' } });
 
     await waitFor(() => {
-      expect(screen.getByText('Book 1')).toBeInTheDocument();
-      expect(screen.getByText('Book 2')).toBeInTheDocument();
+      expect(screen.getByText('Harry Potter and the Deathly Hallows')).toBeInTheDocument();
+      expect(screen.getByText('Harry Potter and the Prisoner of Azkaban')).toBeInTheDocument();
     });
   });
 
@@ -38,8 +38,8 @@ describe('SearchBarComponent', () => {
     mockedAxios.get.mockResolvedValue({
       data: {
         items: [
-          { id: '1', volumeInfo: { title: 'Book 1' } },
-          { id: '2', volumeInfo: { title: 'Book 2' } },
+          { id: '1', volumeInfo: { title: 'Harry Potter and the Deathly Hallows' } },
+          { id: '2', volumeInfo: { title: 'Harry Potter and the Prisoner of Azkaban' } },
         ],
       },
     });
@@ -47,22 +47,22 @@ describe('SearchBarComponent', () => {
     render(<SearchBarComponent />);
 
     const input = screen.getByRole('bookinput');
-    fireEvent.change(input, { target: { value: 'Book' } });
+    fireEvent.change(input, { target: { value: 'Harry Potter' } });
 
     await waitFor(() => {
-      expect(screen.getByText('Book 1')).toBeInTheDocument();
+      expect(screen.getByText('Harry Potter and the Deathly Hallows')).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByText('Book 1'));
-    expect(input).toHaveValue('Book 1');
+    fireEvent.click(screen.getByText('Harry Potter and the Deathly Hallows'));
+    expect(input).toHaveValue('Harry Potter and the Deathly Hallows');
   });
 
   it('navigates dropdown with keyboard', async () => {
     mockedAxios.get.mockResolvedValue({
       data: {
         items: [
-          { id: '1', volumeInfo: { title: 'Book 1' } },
-          { id: '2', volumeInfo: { title: 'Book 2' } },
+          { id: '1', volumeInfo: { title: 'Harry Potter and the Deathly Hallows' } },
+          { id: '2', volumeInfo: { title: 'Harry Potter and the Prisoner of Azkaban' } },
         ],
       },
     });
@@ -70,16 +70,16 @@ describe('SearchBarComponent', () => {
     render(<SearchBarComponent />);
 
     const input = screen.getByRole('bookinput');
-    fireEvent.change(input, { target: { value: 'Book' } });
+    fireEvent.change(input, { target: { value: 'Harry Potter' } });
 
     await waitFor(() => {
-      expect(screen.getByText('Book 1')).toBeInTheDocument();
+      expect(screen.getByText('Harry Potter and the Deathly Hallows')).toBeInTheDocument();
     });
 
     fireEvent.keyDown(input, { key: 'ArrowDown' });
-    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'ArrowUp' });
     fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(input).toHaveValue('Book 2');
+    expect(input).toHaveValue('Harry Potter and the Prisoner of Azkaban');
   });
 });
