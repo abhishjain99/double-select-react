@@ -1,0 +1,75 @@
+.searchbar {
+  position: relative;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.searchbar input {
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.searchbar input:focus {
+  border-color: #007bff;
+}
+
+.searchbar input:not(:placeholder-shown) + .input-title,
+.searchbar input:focus + .input-title {
+  top: 0;
+  left: 10px;
+  font-size: 12px;
+  color: #007bff;
+  background: white;
+  padding: 0 5px;
+  transform: translateY(-50%);
+}
+
+.searchbar .input-title {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  font-size: 16px;
+  color: #aaa;
+  transition: all 0.3s;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.searchbar .arrow-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #aaa;
+  pointer-events: none;
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown li.hovered {
+  background-color: #f0f0f0;
+}
